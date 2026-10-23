@@ -6,7 +6,7 @@
 [![Tips welcome](https://img.shields.io/badge/tips-welcome-d4a017)](https://github.com/561-group/.github/blob/main/TIPS.md)
 <!-- 561-group-standards:badges:end -->
 
-**CoeSite Operations provides enterprise operations services to enterprises.** Its operating assets are actual service procedures, offices, duties, runbooks, delivery records, controls, and independent receiving practices—not a holding area for 561 Group ideas or generic Engineering software.
+**Coesite Operations provides enterprise operations services to enterprises.** Its operating assets are actual service procedures, offices, duties, runbooks, delivery records, controls, and independent receiving practices—not a holding area for 561 Group ideas or generic Engineering software.
 
 Services represented by existing Coesite sections include enterprise outreach and contract pursuit, operational communications, professional staffing and qualification methods, and technical-service operations. A repository demonstrates a source or practice, not a completed customer engagement. Work is taken against real authority, resources, recipient requirements, and acceptance evidence.
 
