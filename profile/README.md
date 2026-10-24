@@ -10,6 +10,8 @@
 
 Services represented by existing Coesite sections include enterprise outreach and contract pursuit, operational communications, professional staffing and qualification methods, and technical-service operations. A repository demonstrates a source or practice, not a completed customer engagement. Work is taken against real authority, resources, recipient requirements, and acceptance evidence.
 
+**Explore the public operations front door:** [Coesite Operations](https://operations.561.group/) describes its service and institutional responsibilities alongside the other [561 Group companies](https://561.group/). Operational methods, staffing, contract acceptance and actual outside outcomes are different evidence classes; the public site is an entrance to accountable work, not a claim that an unspecified customer has bought or accepted a service.
+
 **Repository custody:** reusable operational definitions belong in the owning service section's `lib/agency/` and relevant `content/` or records. Generic libraries, engines, validators, A2A implementations, and deployment software belong to the appropriate Engineering source owner; Group governance and Group-specific instances belong to the Group; customer-specific state belongs to its authorized receiving enterprise. Migrations preserve history and active consumers until independently received.
 
 The 561 Group is operated by Morgan Sennhauser. Its work moves from science to engineering to operations to public
