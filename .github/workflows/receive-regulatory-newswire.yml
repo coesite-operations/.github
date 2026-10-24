@@ -1,0 +1,157 @@
+name: Independently receive public regulatory Newswire source goods
+on:
+  push:
+    branches: [main, ops/independent-regulatory-newswire-receiving-20261024]
+    paths:
+      - ".github/workflows/receive-regulatory-newswire.yml"
+  schedule:
+    - cron: "53 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+concurrency:
+  group: coesite-regulatory-newswire-source-receiver
+  cancel-in-progress: false
+
+jobs:
+  observe-real-public-consumer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Read original Coesite operating source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Actually receive the original published Newswire source goods
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile,writeFile,mkdir,rename} from 'node:fs/promises';
+          import {randomUUID,createHash} from 'node:crypto';
+          import {dirname} from 'node:path';
+
+          // Original PUBLIC Red Cup seller source. No duplicate parser, payment
+          // provider, authority to edit the publication or arbitrary input URL.
+          const BASE='https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/';
+          const OUTPUT='data/records/received-regulatory-newswire';
+          const NOW=new Date().toISOString();
+          const MAX_HISTORY=112;
+          const SHA=/^sha256:[a-f0-9]{64}$/u;
+          const NI=/^ni:\/\/\/sha-256;[A-Za-z0-9_-]{43}$/u;
+          const digest=buffer=>'sha256:'+createHash('sha256').update(buffer).digest('hex');
+          async function getJson(name,maxBytes){
+            const url=BASE+name;
+            const response=await fetch(url,{method:'GET',redirect:'error',cache:'no-store',signal:AbortSignal.timeout(25000)});
+            if(response.status!==200||response.redirected||response.url!==url)
+              throw new Error(name+' original public source unavailable or redirected, HTTP '+response.status);
+            const size=Number(response.headers.get('content-length')??0);
+            if(size>maxBytes)throw new Error(name+' size greater than exact source bound');
+            // Bounded stream reading; no trust in Content-Length alone.
+            const reader=response.body.getReader(),chunks=[];
+            let length=0;
+            try{for(;;){
+              const {done,value}=await reader.read();if(done)break;
+              length+=value.byteLength;
+              if(length>maxBytes)throw new Error(name+' streamed bytes exceed source bound');
+              chunks.push(value);
+            }}finally{await reader.cancel().catch(()=>{});reader.releaseLock();}
+            const original=Buffer.concat(chunks.map(x=>Buffer.from(x)),length);
+            return {url,bytes:length,digest:digest(original),data:JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(original))};
+          }
+          const output={
+            kind:'coesite.actual-public-service-receiving/v1',
+            at:NOW,
+            sourceRoot:BASE,
+            sourceProduct:'Federal Register original Red Cup Newswire source observation',
+            outcome:'unavailable',
+            sourceAudience:'Publicly accessible; no buyer payment or editorial approval inferred',
+            cost:{newCashSpentUsd:'0',providerProcurement:'public HTTP official and published data',physicalRuntimeAndNetworkCost:'not measured'},
+          };
+          try{
+            const [snapshot,deadlines,changes]=await Promise.all([
+              getJson('latest.json',3*1024*1024),
+              getJson('comment-deadlines.json',700*1024),
+              getJson('changes.json',1*1024*1024)
+            ]);
+            const s=snapshot.data,d=deadlines.data,c=changes.data;
+            if(s.kind!=='561.newswire.federal-register-source-observation.v1' ||
+               s.source!=='https://www.federalregister.gov' ||
+               !Array.isArray(s.documents)||s.documentCount!==s.documents.length||
+               s.documentCount<1||!Array.isArray(s.sourcePages)||
+               s.sourcePages.length<1||s.sourcePages.length>5||
+               !s.sourcePages.every(p=>SHA.test(p.rawResponseDigest))||
+               !s.documents.every(item=>typeof item.subject==='string'&&NI.test(item.revision) &&
+                 SHA.test(item.source?.originalResponseDigest))||
+               s.merchantSettlement!==null||
+               d.kind!=='561.newswire.federal-register-comment-deadlines.v1'||
+               d.observedAt!==s.observedAt || !Array.isArray(d.records)||
+               d.recordCount!==d.records.length ||
+               c.kind!=='561.newswire.source-edition-changes.v1'||
+               c.observedAt!==s.observedAt ||!Array.isArray(c.changes)||
+               c.newOrChangedCount!==c.changes.length)
+              throw new Error('Public source packet violated original product or cross-distribution identity');
+            const ageSeconds=(Date.parse(NOW)-Date.parse(s.observedAt))/1000;
+            if(!Number.isFinite(ageSeconds))throw new Error('Original producer observation time missing');
+            Object.assign(output,{
+              outcome:ageSeconds<0?'future-clock':ageSeconds>4*3600?'stale':'received',
+              sourceObservationAt:s.observedAt,
+              ageSeconds,
+              editorialState:s.editorialStatus,
+              sourceCoverage:s.coverage,
+              usefulUnits:{documents:s.documentCount,commentDeadlines:d.recordCount,observedChangedEditions:c.newOrChangedCount},
+              originalAcquisition:{pages:s.sourcePages.length,requests:s.costs?.networkRequests??null,
+                decodedBytes:s.costs?.decodedResponseBytes??null},
+              receivedDistributions:[
+                {url:snapshot.url,digest:snapshot.digest,bytes:snapshot.bytes},
+                {url:deadlines.url,digest:deadlines.digest,bytes:deadlines.bytes},
+                {url:changes.url,digest:changes.digest,bytes:changes.bytes}
+              ],
+              customerAcceptance:'not observed',
+              paidSale:'not observed',
+              terms:'Coesite observed source HTTP reachability and shape, not a merchant transaction or legal/edited news verdict',
+            });
+          }catch(error){
+            output.outcome='unavailable';
+            output.diagnostic=String(error instanceof Error?error.message:error).slice(0,350);
+          }
+          const prior=OUTPUT+'/history.jsonl';
+          let history=[];
+          try{history=(await readFile(prior,'utf8')).split('\n').filter(Boolean).map(JSON.parse).slice(-MAX_HISTORY+1)}
+          catch(error){if(error.code!=='ENOENT')throw error;}
+          const trimmed=[...history,output].slice(-MAX_HISTORY);
+          const counts={};
+          for(const row of trimmed)counts[row.outcome]=(counts[row.outcome]??0)+1;
+          output.history={sampledRuns:trimmed.length,outcomes:counts,
+            definition:'Independent public source receiving outcomes only; not Newswire operator SLA or paid buyer conversion'};
+          await mkdir(OUTPUT,{recursive:true});
+          async function atomic(name,text){
+            const path=OUTPUT+'/'+name,temporary=path+'.'+randomUUID()+'.tmp';
+            await writeFile(temporary,text,{mode:0o644});await rename(temporary,path);
+          }
+          await atomic('latest.json',JSON.stringify(output,null,2)+'\n');
+          await atomic('history.jsonl',trimmed.map(row=>JSON.stringify(row)) .join('\n')+'\n');
+          console.log(JSON.stringify({state:output.outcome,documentUnits:output.usefulUnits?.documents??null,
+            dueDateUnits:output.usefulUnits?.commentDeadlines??null,sourceAgeSeconds:output.ageSeconds??null,
+            publishedOriginalEvidence:true,priorRuns:history.length,cashSpent:'0 USD'}));
+          NODE
+      - name: Publish this distinct Operations source receiver
+        if: github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          git config user.name 'Coesite machine service receiver'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- data/records/received-regulatory-newswire/latest.json data/records/received-regulatory-newswire/history.jsonl
+          if ! git diff --cached --quiet; then
+            git commit -m 'Receive actual published Federal Register Newswire goods and source freshness'
+            git push origin HEAD:main
+          fi
+      - name: Keep independently inspected receiving for this attempted operation
+        uses: actions/upload-artifact@v4
+        with:
+          name: coesite-regulatory-newswire-public-receiving
+          path: data/records/received-regulatory-newswire/
+          if-no-files-found: error
+          retention-days: 7
