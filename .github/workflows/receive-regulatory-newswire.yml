@@ -109,7 +109,6 @@ jobs:
                 {url:deadlines.url,digest:deadlines.digest,bytes:deadlines.bytes},
                 {url:changes.url,digest:changes.digest,bytes:changes.bytes}
               ],
-              independentlyPaid:true===false?null:null,
               customerAcceptance:'not observed',
               paidSale:'not observed',
               terms:'Coesite observed source HTTP reachability and shape, not a merchant transaction or legal/edited news verdict',
