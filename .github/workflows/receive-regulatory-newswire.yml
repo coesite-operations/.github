@@ -73,7 +73,7 @@ jobs:
           try{
             const [snapshot,deadlines,changes]=await Promise.all([
               getJson('latest.json',3*1024*1024),
-              getJson('comment-deadlines.json',700*1024),
+              getJson('comment-deadlines.json',4*1024*1024),
               getJson('changes.json',1*1024*1024)
             ]);
             const s=snapshot.data,d=deadlines.data,c=changes.data;
@@ -96,12 +96,18 @@ jobs:
             const ageSeconds=(Date.parse(NOW)-Date.parse(s.observedAt))/1000;
             if(!Number.isFinite(ageSeconds))throw new Error('Original producer observation time missing');
             Object.assign(output,{
-              outcome:ageSeconds<0?'future-clock':ageSeconds>4*3600?'stale':'received',
+              outcome:ageSeconds<0?'future-clock':ageSeconds>4*3600?'stale':
+                (s.coverage?.complete!==true||d.sourceCoverage?.complete!==true)?'partial-source-coverage':'received',
               sourceObservationAt:s.observedAt,
               ageSeconds,
               editorialState:s.editorialStatus,
               sourceCoverage:s.coverage,
+              deadlineSourceCoverage:d.sourceCoverage??null,
+              deadlineSourceQuery:d.sourceQuery??null,
               usefulUnits:{documents:s.documentCount,commentDeadlines:d.recordCount,observedChangedEditions:c.newOrChangedCount},
+              commentWindowAcquisition:{pages:d.sourcePages?.length??null,
+                requests:d.sourceAcquisitionCosts?.networkRequests??null,
+                decodedBytes:d.sourceAcquisitionCosts?.decodedResponseBytes??null},
               originalAcquisition:{pages:s.sourcePages.length,requests:s.costs?.networkRequests??null,
                 decodedBytes:s.costs?.decodedResponseBytes??null},
               receivedDistributions:[
