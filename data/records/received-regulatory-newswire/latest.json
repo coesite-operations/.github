@@ -1,6 +1,6 @@
 {
   "kind": "coesite.actual-public-service-receiving/v1",
-  "at": "2026-10-25T16:52:15.145Z",
+  "at": "2026-10-25T21:16:44.170Z",
   "sourceRoot": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/",
   "sourceProduct": "Federal Register original Red Cup Newswire source observation",
   "outcome": "received",
@@ -10,8 +10,8 @@
     "providerProcurement": "public HTTP official and published data",
     "physicalRuntimeAndNetworkCost": "not measured"
   },
-  "sourceObservationAt": "2026-10-25T16:37:44.782Z",
-  "ageSeconds": 870.363,
+  "sourceObservationAt": "2026-10-25T21:00:48.851Z",
+  "ageSeconds": 955.319,
   "editorialState": "not-approved",
   "sourceCoverage": {
     "providerReportedTotal": 469,
@@ -76,17 +76,17 @@
   "receivedDistributions": [
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/latest.json",
-      "digest": "sha256:c337a5b83a17b76882a81c5825245a8a88f802d666199408e75b5223a5dd0af3",
+      "digest": "sha256:fd9b7e058386efff10af07a118b7b89b3e7d4e48298ab81a7cf258ab69f4a709",
       "bytes": 1443267
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/comment-deadlines.json",
-      "digest": "sha256:ca3ebfe288e07944cd58c5c0a587959c8fa64f8e683a4bffdb7513a0103598c8",
+      "digest": "sha256:01f050bf4db83ef250cf2c599a28298435f4597194eaf78f0b445c62d566bed2",
       "bytes": 1153866
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/changes.json",
-      "digest": "sha256:578b33e7b13607389f0a55c849619a7c2fa8c6e1b7d00abaca9556252e0b44a0",
+      "digest": "sha256:4b41058622eac6b5be5ddc1647b7bfb23cbe2507e246cdddb16df863ade5a21d",
       "bytes": 287
     }
   ],
@@ -94,9 +94,9 @@
   "paidSale": "not observed",
   "terms": "Coesite observed source HTTP reachability and shape, not a merchant transaction or legal/edited news verdict",
   "history": {
-    "sampledRuns": 5,
+    "sampledRuns": 6,
     "outcomes": {
-      "received": 5
+      "received": 6
     },
     "definition": "Independent public source receiving outcomes only; not Newswire operator SLA or paid buyer conversion"
   }
