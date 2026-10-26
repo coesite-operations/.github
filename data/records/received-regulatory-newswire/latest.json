@@ -1,6 +1,6 @@
 {
   "kind": "coesite.actual-public-service-receiving/v1",
-  "at": "2026-10-26T05:27:55.653Z",
+  "at": "2026-10-26T06:35:40.796Z",
   "sourceRoot": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/",
   "sourceProduct": "Federal Register original Red Cup Newswire source observation",
   "outcome": "received",
@@ -11,7 +11,7 @@
     "physicalRuntimeAndNetworkCost": "not measured"
   },
   "sourceObservationAt": "2026-10-26T05:03:13.967Z",
-  "ageSeconds": 1481.686,
+  "ageSeconds": 5546.829,
   "editorialState": "not-approved",
   "sourceCoverage": {
     "providerReportedTotal": 568,
@@ -94,9 +94,9 @@
   "paidSale": "not observed",
   "terms": "Coesite observed source HTTP reachability and shape, not a merchant transaction or legal/edited news verdict",
   "history": {
-    "sampledRuns": 9,
+    "sampledRuns": 10,
     "outcomes": {
-      "received": 9
+      "received": 10
     },
     "definition": "Independent public source receiving outcomes only; not Newswire operator SLA or paid buyer conversion"
   }
