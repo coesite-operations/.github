@@ -72,8 +72,8 @@ jobs:
           };
           try{
             const [snapshot,deadlines,changes]=await Promise.all([
-              getJson('latest.json',3*1024*1024),
-              getJson('comment-deadlines.json',4*1024*1024),
+              getJson('latest.json',5_000_000),
+              getJson('comment-deadlines.json',5_000_000),
               getJson('changes.json',1*1024*1024)
             ]);
             const s=snapshot.data,d=deadlines.data,c=changes.data;
@@ -81,7 +81,7 @@ jobs:
                s.source!=='https://www.federalregister.gov' ||
                !Array.isArray(s.documents)||s.documentCount!==s.documents.length||
                s.documentCount<1||!Array.isArray(s.sourcePages)||
-               s.sourcePages.length<1||s.sourcePages.length>5||
+               s.sourcePages.length<1||s.sourcePages.length>10||
                !s.sourcePages.every(p=>SHA.test(p.rawResponseDigest))||
                !s.documents.every(item=>typeof item.subject==='string'&&NI.test(item.revision) &&
                  SHA.test(item.source?.originalResponseDigest))||
