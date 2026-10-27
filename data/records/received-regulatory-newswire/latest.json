@@ -1,6 +1,6 @@
 {
   "kind": "coesite.actual-public-service-receiving/v1",
-  "at": "2026-10-27T09:22:34.540Z",
+  "at": "2026-10-27T15:34:25.168Z",
   "sourceRoot": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/",
   "sourceProduct": "Federal Register original Red Cup Newswire source observation",
   "outcome": "received",
@@ -10,8 +10,8 @@
     "providerProcurement": "public HTTP official and published data",
     "physicalRuntimeAndNetworkCost": "not measured"
   },
-  "sourceObservationAt": "2026-10-27T09:12:00.488Z",
-  "ageSeconds": 634.052,
+  "sourceObservationAt": "2026-10-27T15:27:39.480Z",
+  "ageSeconds": 405.688,
   "editorialState": "not-approved",
   "sourceCoverage": {
     "providerReportedTotal": 503,
@@ -61,7 +61,7 @@
   "usefulUnits": {
     "documents": 503,
     "commentDeadlines": 663,
-    "observedChangedEditions": 81
+    "observedChangedEditions": 0
   },
   "commentWindowAcquisition": {
     "pages": 7,
@@ -76,27 +76,27 @@
   "receivedDistributions": [
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/latest.json",
-      "digest": "sha256:35ca6c9c58e51c1d5c6738d898016cfa1741d573bfe7faf88fbefe8595ac8ad3",
+      "digest": "sha256:a612d24fda596e8e000748dfb0071eb9ad78c5d5a41b54fe884604830fbca459",
       "bytes": 1538966
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/comment-deadlines.json",
-      "digest": "sha256:99c4946d56ca884774a317eb44457ae01f6326ae24e94b563af101a8d2023984",
-      "bytes": 1742214
+      "digest": "sha256:8c3913ab21a8357852777083ad060ef2a405c2f50ef2ea8c17fda02625868a9e",
+      "bytes": 1741168
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/changes.json",
-      "digest": "sha256:cb60ea4e2efd642fa1aec965511d3cc77fe5a39bb68c757f84a5c5316cc1cab3",
-      "bytes": 43684
+      "digest": "sha256:aaf8845a67b14abd2a324233106064645907be9f923b61f1791d6e27086ea73e",
+      "bytes": 287
     }
   ],
   "customerAcceptance": "not observed",
   "paidSale": "not observed",
   "terms": "Coesite observed source HTTP reachability and shape, not a merchant transaction or legal/edited news verdict",
   "history": {
-    "sampledRuns": 14,
+    "sampledRuns": 15,
     "outcomes": {
-      "received": 14
+      "received": 15
     },
     "definition": "Independent public source receiving outcomes only; not Newswire operator SLA or paid buyer conversion"
   }
