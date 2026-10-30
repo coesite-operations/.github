@@ -1,6 +1,6 @@
 {
   "kind": "coesite.actual-public-service-receiving/v1",
-  "at": "2026-10-30T13:39:53.084Z",
+  "at": "2026-10-30T20:11:33.530Z",
   "sourceRoot": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/",
   "sourceProduct": "Federal Register original Red Cup Newswire source observation",
   "outcome": "received",
@@ -10,8 +10,8 @@
     "providerProcurement": "public HTTP official and published data",
     "physicalRuntimeAndNetworkCost": "not measured"
   },
-  "sourceObservationAt": "2026-10-30T10:16:27.501Z",
-  "ageSeconds": 12205.583,
+  "sourceObservationAt": "2026-10-30T18:07:05.415Z",
+  "ageSeconds": 7468.115,
   "editorialState": "not-approved",
   "sourceCoverage": {
     "providerReportedTotal": 587,
@@ -25,7 +25,7 @@
       "fieldProfile": "regulatory-decision",
       "dateFieldsRequested": true,
       "commentCloseDates": 196,
-      "effectiveDates": 83,
+      "effectiveDates": 82,
       "docketLinkedRecords": 399,
       "cfrLinkedRecords": 89,
       "correctionLinks": 0,
@@ -34,22 +34,22 @@
     }
   },
   "deadlineSourceCoverage": {
-    "providerReportedTotal": 640,
+    "providerReportedTotal": 641,
     "complete": true,
     "partial": false,
     "conflictingCoverage": false,
     "contestedSourceSubjects": [],
     "pagesRead": 7,
-    "returnedRecords": 640,
+    "returnedRecords": 641,
     "decisionFields": {
       "fieldProfile": "regulatory-decision",
       "dateFieldsRequested": true,
-      "commentCloseDates": 640,
+      "commentCloseDates": 641,
       "effectiveDates": 45,
       "docketLinkedRecords": 515,
       "cfrLinkedRecords": 142,
       "correctionLinks": 0,
-      "eligibleSampleCount": 640,
+      "eligibleSampleCount": 641,
       "sourceOfAuthority": "source-api-returned-fields; original official PDF/legal verification may still be required"
     }
   },
@@ -60,43 +60,43 @@
   },
   "usefulUnits": {
     "documents": 587,
-    "commentDeadlines": 640,
-    "observedChangedEditions": 119
+    "commentDeadlines": 641,
+    "observedChangedEditions": 2
   },
   "commentWindowAcquisition": {
     "pages": 7,
     "requests": 7,
-    "decodedBytes": 1121511
+    "decodedBytes": 1123278
   },
   "originalAcquisition": {
     "pages": 6,
     "requests": 6,
-    "decodedBytes": 848615
+    "decodedBytes": 848607
   },
   "receivedDistributions": [
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/latest.json",
-      "digest": "sha256:013e4af91b4493e50dd6a7ae8abb3d63d15ee29f44c96a8a72b4d89abc1020b6",
-      "bytes": 1806880
+      "digest": "sha256:60103dca49021a18ba8f8f49a62be0d02e29ce8013bcfa20049889800626e446",
+      "bytes": 1806872
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/comment-deadlines.json",
-      "digest": "sha256:ff334838b39b878ade87cf9df6402e55c30bed751e4d87d48b24dc550842d499",
-      "bytes": 1687946
+      "digest": "sha256:e8ef6204612d9b6ddd649a79bb3cfac4ec4f34f716486fb53f07d909e32dbc52",
+      "bytes": 1691075
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/changes.json",
-      "digest": "sha256:09220277b0bbe6fc16376e36fbbd579e495f7eab27062021c27f2f7ebab4a6ad",
-      "bytes": 65016
+      "digest": "sha256:de623871658b007bdd35a2a77b760251facd5e6466201c050ab60d7d7a2df437",
+      "bytes": 1458
     }
   ],
   "customerAcceptance": "not observed",
   "paidSale": "not observed",
   "terms": "Coesite observed source HTTP reachability and shape, not a merchant transaction or legal/edited news verdict",
   "history": {
-    "sampledRuns": 26,
+    "sampledRuns": 27,
     "outcomes": {
-      "received": 23,
+      "received": 24,
       "stale": 3
     },
     "definition": "Independent public source receiving outcomes only; not Newswire operator SLA or paid buyer conversion"
