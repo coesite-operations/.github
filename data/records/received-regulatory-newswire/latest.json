@@ -1,6 +1,6 @@
 {
   "kind": "coesite.actual-public-service-receiving/v1",
-  "at": "2026-10-31T01:07:32.811Z",
+  "at": "2026-10-31T09:58:35.753Z",
   "sourceRoot": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/",
   "sourceProduct": "Federal Register original Red Cup Newswire source observation",
   "outcome": "received",
@@ -10,93 +10,93 @@
     "providerProcurement": "public HTTP official and published data",
     "physicalRuntimeAndNetworkCost": "not measured"
   },
-  "sourceObservationAt": "2026-10-30T22:31:00.030Z",
-  "ageSeconds": 9392.781,
+  "sourceObservationAt": "2026-10-31T05:59:41.565Z",
+  "ageSeconds": 14334.188,
   "editorialState": "not-approved",
   "sourceCoverage": {
-    "providerReportedTotal": 587,
+    "providerReportedTotal": 505,
     "complete": true,
     "partial": false,
     "conflictingCoverage": false,
     "contestedSourceSubjects": [],
     "pagesRead": 6,
-    "returnedRecords": 587,
+    "returnedRecords": 505,
     "decisionFields": {
       "fieldProfile": "regulatory-decision",
       "dateFieldsRequested": true,
-      "commentCloseDates": 196,
-      "effectiveDates": 82,
-      "docketLinkedRecords": 399,
-      "cfrLinkedRecords": 89,
+      "commentCloseDates": 152,
+      "effectiveDates": 75,
+      "docketLinkedRecords": 344,
+      "cfrLinkedRecords": 76,
       "correctionLinks": 0,
-      "eligibleSampleCount": 587,
+      "eligibleSampleCount": 505,
       "sourceOfAuthority": "source-api-returned-fields; original official PDF/legal verification may still be required"
     }
   },
   "deadlineSourceCoverage": {
-    "providerReportedTotal": 641,
+    "providerReportedTotal": 690,
     "complete": true,
     "partial": false,
     "conflictingCoverage": false,
     "contestedSourceSubjects": [],
     "pagesRead": 7,
-    "returnedRecords": 641,
+    "returnedRecords": 690,
     "decisionFields": {
       "fieldProfile": "regulatory-decision",
       "dateFieldsRequested": true,
-      "commentCloseDates": 641,
-      "effectiveDates": 45,
-      "docketLinkedRecords": 515,
-      "cfrLinkedRecords": 142,
+      "commentCloseDates": 690,
+      "effectiveDates": 49,
+      "docketLinkedRecords": 546,
+      "cfrLinkedRecords": 155,
       "correctionLinks": 0,
-      "eligibleSampleCount": 641,
+      "eligibleSampleCount": 690,
       "sourceOfAuthority": "source-api-returned-fields; original official PDF/legal verification may still be required"
     }
   },
   "deadlineSourceQuery": {
-    "commentCloseFrom": "2026-10-30",
-    "commentCloseBy": "2026-11-29",
+    "commentCloseFrom": "2026-10-31",
+    "commentCloseBy": "2026-11-30",
     "profile": "regulatory-decision"
   },
   "usefulUnits": {
-    "documents": 587,
-    "commentDeadlines": 641,
+    "documents": 505,
+    "commentDeadlines": 690,
     "observedChangedEditions": 0
   },
   "commentWindowAcquisition": {
     "pages": 7,
     "requests": 7,
-    "decodedBytes": 1123278
+    "decodedBytes": 1208854
   },
   "originalAcquisition": {
     "pages": 6,
     "requests": 6,
-    "decodedBytes": 848607
+    "decodedBytes": 724824
   },
   "receivedDistributions": [
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/latest.json",
-      "digest": "sha256:3111693c815634f6912c792c66b9e6822c89d86c709fc92ff445a8ec68837d07",
-      "bytes": 1806872
+      "digest": "sha256:3b244792d2e1d064607587e2b763ee74434e4f04a955758e9b467fe2cf734bde",
+      "bytes": 1549406
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/comment-deadlines.json",
-      "digest": "sha256:7e597f917ed1d5a2a9f8d45b52975b7df57e5229e996d7f60f0b1beb89c7e0d5",
-      "bytes": 1690725
+      "digest": "sha256:71301252ab4f12aeff72ba8f689dfca8cb2762cd9aca1696b220d74da3cdb7ec",
+      "bytes": 1849140
     },
     {
       "url": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/changes.json",
-      "digest": "sha256:db7ce5493f6731e899405cd93b953759b941d42f08d9bd74e5eee6747d3f3bc5",
-      "bytes": 287
+      "digest": "sha256:9759b4b23e59a2327b39bc75172898dfcd0f05ded55b6bfdfd76c10cc5c650ae",
+      "bytes": 288
     }
   ],
   "customerAcceptance": "not observed",
   "paidSale": "not observed",
   "terms": "Coesite observed source HTTP reachability and shape, not a merchant transaction or legal/edited news verdict",
   "history": {
-    "sampledRuns": 28,
+    "sampledRuns": 29,
     "outcomes": {
-      "received": 25,
+      "received": 26,
       "stale": 3
     },
     "definition": "Independent public source receiving outcomes only; not Newswire operator SLA or paid buyer conversion"
