@@ -1,6 +1,6 @@
 {
   "kind": "coesite.actual-public-service-receiving/v1",
-  "at": "2026-11-04T01:43:33.875Z",
+  "at": "2026-11-04T11:37:35.680Z",
   "sourceRoot": "https://raw.githubusercontent.com/red-cup-engineering/paid-data-endpoint-service/main/data/records/newswire/federal-register/",
   "sourceProduct": "Federal Register original Red Cup Newswire source observation",
   "outcome": "unavailable",
@@ -10,13 +10,13 @@
     "providerProcurement": "public HTTP official and published data",
     "physicalRuntimeAndNetworkCost": "not measured"
   },
-  "diagnostic": "latest.json original public source unavailable or redirected, HTTP 404",
+  "diagnostic": "changes.json original public source unavailable or redirected, HTTP 404",
   "history": {
-    "sampledRuns": 40,
+    "sampledRuns": 41,
     "outcomes": {
       "received": 27,
       "stale": 4,
-      "unavailable": 9
+      "unavailable": 10
     },
     "definition": "Independent public source receiving outcomes only; not Newswire operator SLA or paid buyer conversion"
   }
